@@ -1,0 +1,47 @@
+.db-check { width:1em; }
+.db-column { width: 10em; min-width: 10em}
+.db-column button { 
+	width: 100%;
+	text-align: left;
+	font-weight: bold;
+}
+.db-column button .caret {
+	float: right;
+	margin-top:0.7em;
+}
+th.db-actions .stick-right {
+	margin-top: -2em;
+}
+.stick-right {
+	position: fixed;
+	right: 0;
+}
+.action-pad.stick-right {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.action-pad {
+	display: inline-block;
+	background-color: #008dd0;
+	color:white;
+	border-radius: 4px;
+	border-radius: 4px;
+}
+ul.action-pad {
+	list-style-type: none;
+	list-style-position: none;
+	padding:2px;
+	margin:0;
+	font-size: 1.2em;
+	white-space: nowrap;
+}
+.action-pad li {
+	display: inline-block;
+	padding:3px 6px;
+}
+.fixed {
+	position: fixed;
+}
+.tab-pane { 
+  padding-top: 4em;
+}
