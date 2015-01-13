@@ -32,6 +32,7 @@ myc.controller('pageController', ['$scope', '$document', '$window',
 		$document.ready(function() {
 			angular.element($window).bind('resize', function(e){
 				$scope.stickToRight('.right-sticky');
+				$scope.scrollTopWithParent('.right-sticky');
 			});
 			angular.element($window).bind('scroll', function(e){
 				$scope.scrollTopWithParent('.right-sticky');
@@ -39,8 +40,18 @@ myc.controller('pageController', ['$scope', '$document', '$window',
 			$scope.stickToRight('.right-sticky');
 			$scope.scrollTopWithParent('.right-sticky');
 			$('table.sticky-th').stickyTableHeaders({fixedOffset: $('ul.nav-tabs')});
-			console.log("ready!");
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+				$scope.stickToRight('.right-sticky');
+				$scope.scrollTopWithParent('.right-sticky');
+			});
 		});
+}]);
+
+myc.controller('rowController', ['$scope', function($scope){
+	$scope.row = $scope.$parent;
+	$scope.beginEdit = function() {
+		console.log('edit row');
+	};
 }]);
 
 myc.controller('bigTableController', ['$scope', '$http', function($scope, $http){

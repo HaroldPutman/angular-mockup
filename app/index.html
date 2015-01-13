@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body ng-controller="pageController">
-
 <div role="tabpanel" class="sticky-tabs">
 
   <!-- Nav tabs -->
@@ -17,13 +16,13 @@
     <li role="presentation"><a href="#names" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Words</a></li>
     <li role="presentation"><a href="#users" aria-controls="messages" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Users</a></li>
     <li role="presentation"><a href="#recipes" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Recipes</a></li>
-    <li role="presentation" class="add-tab"><a href="#new" aria-controls="settings" role="tab"><div class="action-pad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></a></li>
+    <li role="presentation" class="add-tab"><div class="action-pad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add table</div></li>
   </ul>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="home"></div>
-    <div role="tabpanel" class="tab-pane active" id="names">
+    <div role="tabpanel" class="tab-pane active" id="home"></div>
+    <div role="tabpanel" class="tab-pane" id="names">
 	  	<table class="table sticky-th" ng-controller="bigTableController">
-	  	  <thead class="fixed">
+	  	  <thead>
 	  		<tr>
 	  		  <th class="db-check"><input type="checkbox"></th>
 	  		  <th class="db-column">
@@ -55,14 +54,23 @@
 			  </th>
 			  <th class="db-actions">
 			    <ul class="right-sticky action-pad">
-			      <li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
+			      <li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add column</li>
 			    </ul>
 			  </th>
 	  		</tr>
+	  		<tr>
+	  			<th></th>
+	  			<th colspan="10">
+	  				<ul class="action-pad">
+	  				<li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add row</li>
+	  				<li><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete 5 rows</li> 
+	  				</ul>
+	  			</th>
+	  		</tr>
 	  	  </thead>
 	  	  <tbody>
-	  	    <tr ng-repeat="word in words">
-	  		  <td><input type="checkbox"></td>
+	  	    <tr ng-controller="rowController" ng-dblclick="word.edit=!word.edit" ng-repeat="word in words" ng-class="word.edit?'editting':''">
+	  		  <td><input type="checkbox" ng-model="selected"></td>
 	  		  <td>{{word[0]}}</td>
 	  		  <td>{{word[1]}}</td>
 	  		  <td>{{word[2]}}</td>
@@ -72,20 +80,13 @@
 	  		  <td>{{word[6]}}</td>
 	  		  <td>{{word[7]}}</td>
 	  		  <td>{{word[8]}}</td>
-	  		  <td>{{word[9]}}</td>
+	  		  <td class="db-actions"><row-actions></row-actions></td>
 	  	    </tr>
-	<!--  				<td class="db-actions">
-	  					<ul class="action-pad right-sticky">
-	  						<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></li>
-	  						<li><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></li>
-	  						<li><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></li> 
-	  					</ul>
-	  				</td> -->
 	  		</tbody>
 	  	</table>
   	  </div>
   	  <div role="tabpanel" class="tab-pane" id="users">
-  	    <table class="table" ng-controller="userTableController">
+  	    <table class="table sticky-th" ng-controller="userTableController">
 	  	  <thead>
 	  		<tr>
 	  		  <th class="db-check"><input type="checkbox"></th>
@@ -115,8 +116,8 @@
 			</tr>
 		  </thead>
 		  <tbody>
-		  	<tr ng-repeat="user in users">
-	  		  <td><input type="checkbox"></td>
+		  	<tr ng-repeat="user in users" ng-controller="rowController" ng-dblclick="beginEdit()">
+	  		  <td><input type="checkbox" ng-model="selected"></td>
 	  		  <td>{{user.user.name.last}}</td>
 	  		  <td>{{user.user.name.first}}</td>
 	  		  <td>{{user.user.gender}}</td>

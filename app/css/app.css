@@ -16,14 +16,17 @@
 .action-pad.stick-right {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
+	box-shadow: -1px 2px 2px 1px rgba(50, 50, 50, 0.75);
 }
 .action-pad {
 	display: inline-block;
-	background-color: #008dd0;
+	background-color: #666;
 	color:white;
 	border-radius: 4px;
 	border-radius: 4px;
 	padding:2px 4px 2px 6px;
+	margin:8px;
+	font-weight: normal;
 }
 ul.action-pad {
 	list-style-type: none;
@@ -37,6 +40,10 @@ ul.action-pad {
 	display: inline-block;
 	padding:3px 6px;
 }
+.action-pad li+li {
+	border-left: 1px solid #888;
+}
+
 .sticky-tabs .nav-tabs {
 	position: fixed;
 	background: white;
@@ -45,9 +52,20 @@ ul.action-pad {
 .sticky-tabs .tab-content {
 	padding-top: 4em;
 }
-.nav-tabs > li.add-tab > a {
-	padding-bottom: 0;
-}
+
 table.sticky-th thead {
 	background: white;
+}
+/* clean up artifact created by StickyTableHeaders */
+.fixed.tableFloatingHeader .db-actions {
+	display:none;
+}
+tr.editting {
+	background: silver;
+}
+tbody > tr > td.db-actions {
+	visibility: hidden;
+}
+tbody > tr.editting > td.db-actions {
+	visibility: visible;
 }
