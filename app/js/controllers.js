@@ -38,6 +38,7 @@ myc.controller('pageController', ['$scope', '$document', '$window',
 			});
 			$scope.stickToRight('.right-sticky');
 			$scope.scrollTopWithParent('.right-sticky');
+			$('table.sticky-th').stickyTableHeaders({fixedOffset: $('ul.nav-tabs')});
 			console.log("ready!");
 		});
 }]);

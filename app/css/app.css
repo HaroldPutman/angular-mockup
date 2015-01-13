@@ -23,6 +23,7 @@
 	color:white;
 	border-radius: 4px;
 	border-radius: 4px;
+	padding:2px 4px 2px 6px;
 }
 ul.action-pad {
 	list-style-type: none;
@@ -36,9 +37,17 @@ ul.action-pad {
 	display: inline-block;
 	padding:3px 6px;
 }
-.fixed {
+.sticky-tabs .nav-tabs {
 	position: fixed;
+	background: white;
+	width: 100%;
 }
-.tab-pane { 
-  padding-top: 4em;
+.sticky-tabs .tab-content {
+	padding-top: 4em;
+}
+.nav-tabs > li.add-tab > a {
+	padding-bottom: 0;
+}
+table.sticky-th thead {
+	background: white;
 }

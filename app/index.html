@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body ng-controller="pageController">
-<div role="tabpanel">
+
+<div role="tabpanel" class="sticky-tabs">
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs tabs-fixed" role="tablist">
+  <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
-    <li role="presentation"><a href="#names" aria-controls="profile" role="tab" data-toggle="tab">Words</a></li>
-    <li role="presentation"><a href="#users" aria-controls="messages" role="tab" data-toggle="tab">Users</a></li>
-    <li role="presentation"><a href="#recipes" aria-controls="settings" role="tab" data-toggle="tab">Recipes</a></li>
+    <li role="presentation"><a href="#names" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Words</a></li>
+    <li role="presentation"><a href="#users" aria-controls="messages" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Users</a></li>
+    <li role="presentation"><a href="#recipes" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Recipes</a></li>
+    <li role="presentation" class="add-tab"><a href="#new" aria-controls="settings" role="tab"><div class="action-pad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></a></li>
   </ul>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane" id="home"></div>
     <div role="tabpanel" class="tab-pane active" id="names">
-	  	<table class="table" ng-controller="bigTableController">
-	  	  <thead>
+	  	<table class="table sticky-th" ng-controller="bigTableController">
+	  	  <thead class="fixed">
 	  		<tr>
 	  		  <th class="db-check"><input type="checkbox"></th>
 	  		  <th class="db-column">
@@ -105,6 +107,11 @@
 	  		  <th class="db-column">
 	  			<column-header name="State"></column-header>
 		  	  </th>
+			  <th class="db-actions">
+			    <ul class="right-sticky action-pad">
+			      <li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
+			    </ul>
+			  </th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -127,6 +134,7 @@
   	<script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+  	<script src="bower_components/StickyTableHeaders/js/jquery.stickytableheaders.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
