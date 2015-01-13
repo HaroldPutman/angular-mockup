@@ -9,9 +9,6 @@
 	float: right;
 	margin-top:0.7em;
 }
-th.db-actions .stick-right {
-	margin-top: -2em;
-}
 .stick-right {
 	position: fixed;
 	right: 0;

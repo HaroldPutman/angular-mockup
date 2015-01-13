@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body ng-controller="pageController">
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs tabs-fixed" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
+    <li role="presentation"><a href="#names" aria-controls="profile" role="tab" data-toggle="tab">Words</a></li>
+    <li role="presentation"><a href="#users" aria-controls="messages" role="tab" data-toggle="tab">Users</a></li>
+    <li role="presentation"><a href="#recipes" aria-controls="settings" role="tab" data-toggle="tab">Recipes</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="home"></div>
+    <div role="tabpanel" class="tab-pane active" id="names">
+	  	<table class="table" ng-controller="bigTableController">
+	  	  <thead>
+	  		<tr>
+	  		  <th class="db-check"><input type="checkbox"></th>
+	  		  <th class="db-column">
+	  			<column-header name="Alpha"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Bravo"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Charlie"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Delta"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Echo"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Foxtrot"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Golf"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Hotel"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="India"></column-header>
+			  </th>
+			  <th class="db-actions">
+			    <ul class="right-sticky action-pad">
+			      <li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
+			    </ul>
+			  </th>
+	  		</tr>
+	  	  </thead>
+	  	  <tbody>
+	  	    <tr ng-repeat="word in words">
+	  		  <td><input type="checkbox"></td>
+	  		  <td>{{word[0]}}</td>
+	  		  <td>{{word[1]}}</td>
+	  		  <td>{{word[2]}}</td>
+	  		  <td>{{word[3]}}</td>
+	  		  <td>{{word[4]}}</td>
+	  		  <td>{{word[5]}}</td>
+	  		  <td>{{word[6]}}</td>
+	  		  <td>{{word[7]}}</td>
+	  		  <td>{{word[8]}}</td>
+	  		  <td>{{word[9]}}</td>
+	  	    </tr>
+	<!--  				<td class="db-actions">
+	  					<ul class="action-pad right-sticky">
+	  						<li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></li>
+	  						<li><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></li>
+	  						<li><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></li> 
+	  					</ul>
+	  				</td> -->
+	  		</tbody>
+	  	</table>
+  	  </div>
+  	  <div role="tabpanel" class="tab-pane" id="users">
+  	    <table class="table" ng-controller="userTableController">
+	  	  <thead>
+	  		<tr>
+	  		  <th class="db-check"><input type="checkbox"></th>
+	  		  <th class="db-column">
+	  			<column-header name="Last Name"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="First Name"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Gender"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Address"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="City"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="State"></column-header>
+		  	  </th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  	<tr ng-repeat="user in users">
+	  		  <td><input type="checkbox"></td>
+	  		  <td>{{user.user.name.last}}</td>
+	  		  <td>{{user.user.name.first}}</td>
+	  		  <td>{{user.user.gender}}</td>
+	  		  <td>{{user.user.location.street}}</td>
+	  		  <td>{{user.user.location.city}}</td>
+	  		  <td>{{user.user.location.state}}</td>
+		  	</tr> 
+		  </tbody>
+		</table>
+
+  	  </div>
+
+  	</div>
+
+  	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+  </body>
+</html>
