@@ -15,7 +15,7 @@
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
     <li role="presentation"><a href="#names" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Words</a></li>
     <li role="presentation"><a href="#users" aria-controls="messages" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Users</a></li>
-    <li role="presentation"><a href="#recipes" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Recipes</a></li>
+    <li role="presentation"><a href="#small" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Small table</a></li>
     <li role="presentation" class="add-tab"><div class="action-pad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add table</div></li>
   </ul>
   <div class="tab-content">
@@ -114,9 +114,18 @@
 			    </ul>
 			  </th>
 			</tr>
+	  		<tr>
+	  			<th></th>
+	  			<th colspan="7">
+	  				<ul class="action-pad">
+	  				<li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add row</li>
+	  				<li><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete 5 rows</li> 
+	  				</ul>
+	  			</th>
+	  		</tr>
 		  </thead>
 		  <tbody>
-		  	<tr ng-repeat="user in users" ng-controller="rowController" ng-dblclick="beginEdit()">
+		  	<tr ng-repeat="user in users"  ng-controller="rowController" ng-dblclick="user.edit=!user.edit" ng-class="user.edit?'editting':''">
 	  		  <td><input type="checkbox" ng-model="selected"></td>
 	  		  <td>{{user.user.name.last}}</td>
 	  		  <td>{{user.user.name.first}}</td>
@@ -124,10 +133,53 @@
 	  		  <td>{{user.user.location.street}}</td>
 	  		  <td>{{user.user.location.city}}</td>
 	  		  <td>{{user.user.location.state}}</td>
+  	  		  <td class="db-actions"><row-actions></row-actions></td>
 		  	</tr> 
 		  </tbody>
 		</table>
-
+  	  </div>
+  	  <div role="tabpanel" class="tab-pane" id="small">
+  	    <table class="table sticky-th">
+	  	  <thead>
+	  		<tr>
+	  		  <th class="db-check"><input type="checkbox"></th>
+	  		  <th class="db-column">
+	  			<column-header name="Food"></column-header>
+			  </th>
+	  		  <th class="db-column">
+	  			<column-header name="Calories"></column-header>
+			  </th>
+			  <th class="db-actions">
+			    <ul class="right-sticky action-pad">
+			      <li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></li>
+			    </ul>
+			  </th>
+			</tr>
+			<tr>
+	  			<th></th>
+	  			<th colspan="3">
+	  				<ul class="action-pad">
+	  				<li><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add row</li>
+	  				<li><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete 5 rows</li> 
+	  				</ul>
+	  			</th>
+	  		</tr>
+		  </thead>
+		  <tbody>
+		  	<tr ng-controller="rowController" ng-dblclick="">
+	  		  <td><input type="checkbox" ng-model="selected"></td>
+	  		  <td>Donut</td>
+	  		  <td>800</td>
+  	  		  <td class="db-actions"><row-actions></row-actions></td>
+		  	</tr> 
+		  	<tr ng-controller="rowController" ng-dblclick="">
+	  		  <td><input type="checkbox" ng-model="selected"></td>
+	  		  <td>Mt. Dew</td>
+	  		  <td>170</td>
+  	  		  <td class="db-actions"><row-actions></row-actions></td>
+		  	</tr> 
+		  </tbody>
+		</table>
   	  </div>
 
   	</div>
